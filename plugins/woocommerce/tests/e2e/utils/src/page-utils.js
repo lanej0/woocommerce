@@ -201,15 +201,13 @@ export const moveAllItemsToTrash = async () => {
 };
 
 /**
- * Use puppeteer page eval to click an element.
+ * Use Playwright page eval to click an element.
  *
  * Useful for clicking items that have been added to the DOM via ajax.
  *
  * @param {string} selector Selector of the filter link to be clicked.
  */
 export const evalAndClick = async ( selector ) => {
-	// We use this when `expect(page).toClick()` is unable to find the element
-	// See: https://github.com/puppeteer/puppeteer/issues/1769#issuecomment-637645219
 	page.$eval( selector, elem => elem.click() );
 };
 

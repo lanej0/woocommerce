@@ -58,7 +58,7 @@ beforeAll(async () => {
 
 	await page.goto(WP_ADMIN_LOGIN);
 	await clearLocalStorage();
-	await setBrowserViewport('large');
+	// await setBrowserViewport('large');
 });
 
 // Clear browser cookies and cache using DevTools.
@@ -71,7 +71,7 @@ afterAll(async () => {
 		// Prevent an error here causing tests to fail.
 	}
 
-	const client = await page.target().createCDPSession();
-	await client.send('Network.clearBrowserCookies');
-	await client.send('Network.clearBrowserCache');
+	// const client = await page.target().createCDPSession();
+	// await client.send('Network.clearBrowserCookies');
+	// await client.send('Network.clearBrowserCache');
 });

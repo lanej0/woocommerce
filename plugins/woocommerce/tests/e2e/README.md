@@ -268,7 +268,7 @@ In the WooCommerce Core repository the tests are in `tests/e2e/core-tests/specs/
 
 The following packages are used in write tests:
 
-- `@automattic/puppeteer-utils` - utilities and configuration for running puppeteer against WordPress. See details in the [package's repository](https://github.com/Automattic/puppeteer-utils).
+- `@lanej0/playwright-utils` - utilities and configuration for running Playwright against WordPress. See details in the [package's repository](https://github.com/lanej0/playwright-utils).
 - `@woocommerce/e2e-utils` - this package contains utilities to simplify writing e2e tests specific to WooCommmerce. See details in the [package's repository](https://github.com/woocommerce/woocommerce/tree/trunk/tests/e2e/utils).
 
 ### Creating test structure
@@ -329,7 +329,7 @@ it( 'merchant can create virtual product', async () => {
 
 You would then continue writing the test using utilities where possible. 
 
-Make sure to utilize the functions of the `@automattic/puppeteer-utils` package where possible. For example, if you need to wait for a certain element to be ready to be clicked on and then click on it, you can use `waitAndClick()` function:
+Make sure to utilize the functions of the `@lanej0/playwright-utils` package where possible. For example, if you need to wait for a certain element to be ready to be clicked on and then click on it, you can use `waitAndClick()` function:
 
 ```
 await waitAndClick( page, '#selector' ); 

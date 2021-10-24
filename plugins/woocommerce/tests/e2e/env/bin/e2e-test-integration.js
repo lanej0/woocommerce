@@ -5,7 +5,7 @@ const program = require( 'commander' );
 const path = require( 'path' );
 const fs = require( 'fs' );
 const { getAppRoot } = require( '../utils' );
-const { WC_E2E_SCREENSHOTS, JEST_PUPPETEER_CONFIG, DEFAULT_TIMEOUT_OVERRIDE } = process.env;
+const { WC_E2E_SCREENSHOTS, JEST_PLAYWRIGHT_CONFIG, DEFAULT_TIMEOUT_OVERRIDE } = process.env;
 
 program
 	.usage( '<file ...> [options]' )
@@ -47,13 +47,13 @@ if ( DEFAULT_TIMEOUT_OVERRIDE ) {
 	testEnvVars.jest_test_timeout = DEFAULT_TIMEOUT_OVERRIDE;
 }
 
-if ( ! JEST_PUPPETEER_CONFIG ) {
-	// Use local Puppeteer config if there is one.
+if ( ! JEST_PLAYWRIGHT_CONFIG ) {
+	// Use local Playwright config if there is one.
 	// Load test configuration file into an object.
-	const localJestConfigFile = path.resolve( appPath, 'tests/e2e/config/jest-puppeteer.config.js' );
-	const jestConfigFile = path.resolve( __dirname, '../config/jest-puppeteer.config.js' );
+	const localJestConfigFile = path.resolve( appPath, 'tests/e2e/config/jest-playwright.config.js' );
+	const jestConfigFile = path.resolve( __dirname, '../config/jest-playwright.config.js' );
 
-	testEnvVars.JEST_PUPPETEER_CONFIG = fs.existsSync( localJestConfigFile ) ? localJestConfigFile : jestConfigFile;
+	testEnvVars.JEST_PLAYWRIGHT_CONFIG = fs.existsSync( localJestConfigFile ) ? localJestConfigFile : jestConfigFile;
 }
 
 // Check for running a specific script
@@ -68,11 +68,12 @@ if ( program.args.length == 1 ) {
 	}
 }
 
-let jestCommand = 'jest';
+let jestCommand = 'playwright';
 const jestArgs = [
-	'--maxWorkers=1',
-	'--rootDir=./',
-	'--verbose',
+	'test',
+//	'--maxWorkers=1',
+//	'--rootDir=./',
+//	'--verbose',
 	...program.args,
 ];
 
@@ -94,7 +95,7 @@ if ( appPath ) {
 	}
 }
 
-jestArgs.push( '--config=' + configPath );
+// jestArgs.push( '--config=' + configPath );
 
 const jestProcess = spawnSync(
 	jestCommand,
@@ -105,7 +106,8 @@ const jestProcess = spawnSync(
 	}
 );
 
-console.log( 'Jest exit code: ' + jestProcess.status );
+console.log('Jest exit code: ' + jestProcess.status);
+console.log(jestArgs);
 
 // Pass Jest exit code to npm
 process.exit( jestProcess.status );

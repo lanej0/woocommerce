@@ -2,19 +2,19 @@
  * Internal dependencies
  */
 const jestConfig = require( './jest.config' );
-const jestPuppeteerConfig = require( './jest-puppeteer.config' );
+const jestPlaywrightConfig = require( './jest-playwright.config' );
 const {
 	useE2EBabelConfig,
 	useE2EEsLintConfig,
 	useE2EJestConfig,
-	useE2EJestPuppeteerConfig
+	useE2EJestPlaywrightConfig
 } = require( './use-config' );
 
 module.exports = {
 	jestConfig,
-	jestPuppeteerConfig,
+	jestPlaywrightConfig,
 	useE2EBabelConfig,
 	useE2EEsLintConfig,
 	useE2EJestConfig,
-	useE2EJestPuppeteerConfig,
+	useE2EJestPlaywrightConfig,
 };

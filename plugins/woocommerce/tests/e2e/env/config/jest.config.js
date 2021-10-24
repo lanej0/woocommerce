@@ -1,7 +1,7 @@
 /**
  * External Dependencies
  */
-const { jestConfig } = require( '@automattic/puppeteer-utils' );
+const { jestConfig } = require( '@lanej0/playwright-utils' );
 const { WC_E2E_SCREENSHOTS } = process.env;
 const path = require( 'path' );
 const fs = require( 'fs' );
@@ -18,7 +18,7 @@ if ( WC_E2E_SCREENSHOTS ) {
 let setupFilesAfterEnv = [
 	path.resolve( __dirname, '../build/setup/jest.setup.js' ),
 	...failureSetup,
-	'expect-puppeteer',
+	'expect-playwright',
 ];
 
 const appPath = getAppRoot();

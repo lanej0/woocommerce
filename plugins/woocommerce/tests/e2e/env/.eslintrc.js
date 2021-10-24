@@ -9,7 +9,7 @@ module.exports = {
 		page: true,
 		browser: true,
 		context: true,
-		jestPuppeteer: true,
+		jestPlaywright: true,
 	},
 	plugins: [ 'jest' ],
 };

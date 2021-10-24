@@ -129,7 +129,7 @@ The test sequencer uses the following default Puppeteer configuration:
 // dev mode
 	puppeteerConfig = {
 		launch: {
-			...jestPuppeteerConfig.launch, // @automattic/puppeteer-utils
+			...jestPlaywrightConfig.launch, // @lanej0/playwright-utils
 			ignoreHTTPSErrors: true,
 			headless: false,
 			args: [ '--window-size=1920,1080', '--user-agent=chrome' ],

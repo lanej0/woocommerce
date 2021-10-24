@@ -8,7 +8,7 @@
     "wordpress",
     "woocommerce",
     "e2e",
-    "puppeteer"
+    "playwright"
   ],
   "homepage": "https://github.com/woocommerce/woocommerce/tree/trunk/tests/e2e/env/README.md",
   "bugs": {
@@ -21,7 +21,7 @@
   "main": "index.js",
   "module": "build-module/index.js",
   "dependencies": {
-    "@automattic/puppeteer-utils": "github:Automattic/puppeteer-utils#0f3ec50",
+    "@lanej0/playwright-utils": "github:lanej0/playwright-utils",
     "@jest/test-sequencer": "^25.5.4",
     "@slack/web-api": "^6.1.0",
     "@woocommerce/api": "^0.2.0",
@@ -30,7 +30,6 @@
     "app-root-path": "^3.0.0",
     "jest": "^25.1.0",
     "jest-each": "25.5.0",
-    "jest-puppeteer": "^4.4.0",
     "request": "^2.88.2",
     "node-stream-zip": "^1.13.6"
   },

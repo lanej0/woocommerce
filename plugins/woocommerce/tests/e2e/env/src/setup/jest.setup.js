@@ -26,7 +26,7 @@ addConsoleSuppression('the server responded with a status of 404');
 /**
  * Set of console logging types observed to protect against unexpected yet
  * handled (i.e. not catastrophic) errors or warnings. Each key corresponds
- * to the Puppeteer ConsoleMessage type, its value the corresponding function
+ * to the Playwright ConsoleMessage type, its value the corresponding function
  * on the console global object.
  *
  * @type {Object<string,string>}
@@ -38,7 +38,7 @@ const OBSERVED_CONSOLE_MESSAGE_TYPES = {
 
 async function setupBrowser() {
 	await clearLocalStorage();
-	await setBrowserViewport( 'large' );
+	// await setBrowserViewport( 'large' );
 }
 
 /**
@@ -138,17 +138,6 @@ function observeConsoleLogging() {
 			return;
 		}
 
-		// As of Puppeteer 1.6.1, `message.text()` wrongly returns an object of
-		// type JSHandle for error logging, instead of the expected string.
-		//
-		// See: https://github.com/GoogleChrome/puppeteer/issues/3397
-		//
-		// The recommendation there to asynchronously resolve the error value
-		// upon a console event may be prone to a race condition with the test
-		// completion, leaving a possibility of an error not being surfaced
-		// correctly. Instead, the logic here synchronously inspects the
-		// internal object shape of the JSHandle to find the error text. If it
-		// cannot be found, the default text value is used instead.
 		text = get(
 			message.args(),
 			[ 0, '_remoteObject', 'description' ],

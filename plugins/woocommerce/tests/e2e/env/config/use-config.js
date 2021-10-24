@@ -1,5 +1,5 @@
 const jestConfig = require( './jest.config.js' );
-const jestPuppeteerConfig = require( './jest-puppeteer.config.js' );
+const jestPlaywrightConfig = require( './jest-playwright.config.js' );
 const babelConfig = require( '../babel.config' );
 const esLintConfig = require( '../.eslintrc.js' );
 
@@ -69,24 +69,24 @@ const useE2EJestConfig = function( customConfig ) {
 	return combinedConfig;
 };
 
-const useE2EJestPuppeteerConfig = function( customPuppeteerConfig ) {
-	let combinedPuppeteerConfig = {
-		...jestPuppeteerConfig,
-		...customPuppeteerConfig,
+const useE2EJestPlaywrightConfig = function( customPlaywrightConfig ) {
+	let combinedPlaywrightConfig = {
+		...jestPlaywrightConfig,
+		...customPlaywrightConfig,
 	};
 	// Only need to be merged if both exist.
-	if ( jestPuppeteerConfig.launch && customPuppeteerConfig.launch ) {
-		combinedPuppeteerConfig.launch = {
-			...jestPuppeteerConfig.launch,
-			...customPuppeteerConfig.launch,
+	if ( jestPlaywrightConfig.launch && customPlaywrightConfig.launch ) {
+		combinedPlaywrightConfig.launch = {
+			...jestPlaywrightConfig.launch,
+			...customPlaywrightConfig.launch,
 		};
 	}
-	return combinedPuppeteerConfig;
+	return combinedPlaywrightConfig;
 };
 
 module.exports = {
 	useE2EBabelConfig,
 	useE2EEsLintConfig,
 	useE2EJestConfig,
-	useE2EJestPuppeteerConfig,
+	useE2EJestPlaywrightConfig,
 };

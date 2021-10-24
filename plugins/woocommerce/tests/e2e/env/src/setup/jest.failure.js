@@ -8,12 +8,6 @@ import { bind } from 'jest-each';
 const { takeScreenshotFor } = require( '../../utils' );
 
 /**
- * Override the test case method so we can take screenshots of assertion failures.
- *
- * See: https://github.com/smooth-code/jest-puppeteer/issues/131#issuecomment-469439666
- */
-
-/**
  * We need to reference the original version of Jest.
  */
 const originalDescribe = global.describe;

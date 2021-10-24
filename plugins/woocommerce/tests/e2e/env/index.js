@@ -9,13 +9,13 @@ const slackUtils = require( './src/slack' );
 /**
  * External dependencies
  */
-const allPuppeteerUtils = require( '@automattic/puppeteer-utils' );
+const allPlaywrightUtils = require( '@lanej0/playwright-utils' );
 
 module.exports = {
 	babelConfig,
 	esLintConfig,
 	...allE2EConfig,
 	...allE2EUtils,
-	...allPuppeteerUtils,
+	...allPlaywrightUtils,
 	...slackUtils,
 };
